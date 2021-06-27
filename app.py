@@ -1,9 +1,10 @@
 import json
 import pathlib
+import random
 
 from collections import defaultdict
 
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -20,4 +21,4 @@ for path in pathlib.Path('static/sounds').rglob('*.mp3'):
 
 @app.route('/')
 def index():
-    return '<html><p><h1>Hello, World!</h1></p></html>'
+    return render_template('index.html')
