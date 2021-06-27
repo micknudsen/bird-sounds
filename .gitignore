@@ -130,3 +130,6 @@ dmypy.json
 
 # Xeno-Canto metadata
 scripts/xeno-canto/
+
+# flask
+static/
