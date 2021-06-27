@@ -4,7 +4,7 @@ import random
 
 from collections import defaultdict
 
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 
 app = Flask(__name__)
@@ -21,4 +21,8 @@ for path in pathlib.Path('static/sounds').rglob('*.mp3'):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+
+    species = random.choice(list(sounds.keys()))
+    sound_url = url_for('static', filename=random.choice(sounds[species]))
+
+    return render_template('index.html', sound_url=sound_url)
