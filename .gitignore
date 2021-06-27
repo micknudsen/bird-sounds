@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # Xeno-Canto metadata
-scripts/xeno-canto/
+metadata/xeno-canto/
 
 # flask
 static/
