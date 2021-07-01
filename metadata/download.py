@@ -26,7 +26,7 @@ def download(data, species, behavior):
     simple_species = species.replace(' ', '_').lower()
     simple_behavior = behavior.replace(' ', '_').lower()
 
-    for gbif_id, row in tqdm(data_subset.iterrows(), total=len(data_subset), desc=f'{species} ({behavior})'):
+    for gbif_id, row in tqdm(data_subset.iterrows(), total=len(data_subset), desc=f'{species} ({behavior.capitalize()})'):
 
         download_link = row['identifier']
         local_file = os.path.join('..', 'static', 'sounds', simple_species, simple_behavior, f'{gbif_id}.mp3')
