@@ -16,10 +16,10 @@ db = SQLAlchemy(app)
 
 class Species(db.Model):
 
-    __tablename__ = 'species'
-
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
+
+    sounds = db.relation('Sound', backref='species')
 
     def __repr__(self) -> str:
         return f'<Species {self.name}>'
@@ -27,13 +27,22 @@ class Species(db.Model):
 
 class Behavior(db.Model):
 
-    __tablename__ = 'behaviors'
-
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
 
+    sounds = db.relation('Sound', backref='behavior')
+
     def __repr__(self) -> str:
-        return f'<Behavior {self.name}'
+        return f'<Behavior {self.name}>'
+
+
+class Sound(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    path = db.Column(db.String(64), unique=True)
+
+    species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
+    behavior_id = db.Column(db.Integer, db.ForeignKey('behavior.id'))
 
 
 @app.route('/')
