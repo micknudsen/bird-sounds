@@ -25,6 +25,17 @@ class Species(db.Model):
         return f'<Species {self.name}>'
 
 
+class Behavior(db.Model):
+
+    __tablename__ = 'behaviors'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+
+    def __repr__(self) -> str:
+        return f'<Behavior {self.name}'
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
