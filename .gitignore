@@ -139,3 +139,6 @@ static/
 
 # Mac OS
 .DS_Store
+
+# Databases
+*.sqlite
