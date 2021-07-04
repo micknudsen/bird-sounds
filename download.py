@@ -1,14 +1,19 @@
 import json
 import logging
 import os
+import pathlib
 import urllib.request
 
 import pandas as pd
 from tqdm import tqdm
 
+from app import db, Species, Behavior, Sound
+
 
 logging.basicConfig(format='[%(levelname)s] %(asctime)s %(message)s',
                     datefmt='%Y/%m/%d %H:%M:%S', level=logging.INFO)
+
+logging.info('Parsing metadata')
 
 meatadata = pd.read_csv('metadata/xeno-canto/verbatim.txt', sep='\t', low_memory=False)
 meatadata = meatadata[['gbifID', 'behavior', 'scientificName']].set_index('gbifID')
@@ -39,7 +44,35 @@ def download(data, species, behavior):
                 logging.warning(f'Unable to download sound for {species} ({behavior}) with GBIF_ID {gbif_id}. Reason given: {e}')
 
 
+logging.info('Downloading sounds')
+
 with open('metadata/selection.json', 'r') as f:
     for species, behaviors in json.load(f).items():
         for behavior in behaviors:
             download(data=data, species=species, behavior=behavior)
+
+logging.info('Updating database')
+
+db.create_all()
+
+for path in pathlib.Path('static/sounds').rglob('*.mp3'):
+
+    species_name = path.parts[2].replace('_', ' ').capitalize()
+    behavior_name = path.parts[3].replace('_', ' ').capitalize()
+
+    species = Species.query.filter_by(name=species_name).first()
+    if not species:
+        species = Species(name=species_name)
+        db.session.add(species)
+
+    behavior = Behavior.query.filter_by(name=behavior_name).first()
+    if not behavior:
+        behavior = Behavior(name=behavior_name)
+        db.session.add(behavior)
+
+    sound = Sound.query.filter_by(path=str(path)).first()
+    if not sound:
+        sound = Sound(path=str(path), species=species, behavior=behavior)
+        db.session.add(sound)
+
+db.session.commit()

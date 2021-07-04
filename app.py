@@ -1,5 +1,4 @@
 import os
-import pathlib
 
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
@@ -47,31 +46,6 @@ class Sound(db.Model):
 
     species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
     behavior_id = db.Column(db.Integer, db.ForeignKey('behavior.id'))
-
-
-db.create_all()
-
-for path in pathlib.Path('static/sounds').rglob('*.mp3'):
-
-    species_name = path.parts[2].replace('_', ' ').capitalize()
-    behavior_name = path.parts[3].replace('_', ' ').capitalize()
-
-    species = Species.query.filter_by(name=species_name).first()
-    if not species:
-        species = Species(name=species_name)
-        db.session.add(species)
-
-    behavior = Behavior.query.filter_by(name=behavior_name).first()
-    if not behavior:
-        behavior = Behavior(name=behavior_name)
-        db.session.add(behavior)
-
-    sound = Sound.query.filter_by(path=str(path)).first()
-    if not sound:
-        sound = Sound(path=str(path), species=species, behavior=behavior)
-        db.session.add(sound)
-
-db.session.commit()
 
 
 @app.route('/')
