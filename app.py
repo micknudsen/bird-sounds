@@ -1,4 +1,5 @@
 import os
+import random
 
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
@@ -50,4 +51,10 @@ class Sound(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+
+    choices = random.sample(Species.query.all(), 4)
+    correct = random.choice(choices)
+
+    sound = random.choice(Sound.query.filter_by(species=correct).all())
+
+    return render_template('index.html', sound=sound, choices=choices)

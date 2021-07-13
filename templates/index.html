@@ -7,5 +7,11 @@
     <div class="page-header">
         <h1>Hello, World!</h1>
     </div>
+    <audio controls>
+        <source src="{{ sound.path }}" type="audio/mpeg">
+    </audio>
+    {% for species in choices %}
+        <button type="button" class="btn btn-primary btn-lg btn-block">{{ species.name }}</button>
+    {% endfor %}
 </div>
 {% endblock %}
