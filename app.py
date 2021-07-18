@@ -1,7 +1,7 @@
 import os
 import random
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 
@@ -49,8 +49,11 @@ class Sound(db.Model):
     behavior_id = db.Column(db.Integer, db.ForeignKey('behavior.id'))
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
+
+    if request.method == 'POST':
+        return redirect(url_for('index'))
 
     choices = random.sample(Species.query.all(), 4)
     correct = random.choice(choices)
