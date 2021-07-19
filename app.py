@@ -23,6 +23,7 @@ class Species(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
     sounds = db.relation('Sound', backref='species')
+    guesses = db.relation('Guess', backref='species')
 
 
 class Behavior(db.Model):
@@ -36,6 +37,12 @@ class Sound(db.Model):
     path = db.Column(db.String(64), unique=True)
     species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
     behavior_id = db.Column(db.Integer, db.ForeignKey('behavior.id'))
+
+
+class Guess(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sound_id = db.Column(db.Integer, db.ForeignKey('sound.id'))
+    species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
 
 
 @app.route('/', methods=['GET', 'POST'])
