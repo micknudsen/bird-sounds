@@ -142,3 +142,4 @@ static/
 
 # Databases
 *.sqlite
+*.sqlite-journal
