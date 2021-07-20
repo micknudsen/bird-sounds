@@ -1,6 +1,8 @@
 import os
 import random
 
+from typing import List
+
 from flask import Flask, render_template, redirect, request, session, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
@@ -44,6 +46,31 @@ class Guess(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sound_id = db.Column(db.Integer, db.ForeignKey('sound.id'))
     species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
+
+
+def get_species() -> Species:
+
+    candidates = Species.query.all()
+
+    wrong_counts = []
+    for species in candidates:
+        wrong_counts.append(sum(1 for guess in Guess.query.filter_by(species=species)
+                                if not guess.species == guess.sound.species))
+
+    weights = [1 + count for count in wrong_counts]
+    return random.choices(candidates, weights=weights, k=1)
+
+
+def get_choices(species: Species, n_alternatives: int = 3) -> List[Species]:
+
+    alternatives = [alternative for alternative in Species.query.all() if not alternative == species]
+
+    wrong_counts = []
+    for alternative in alternatives:
+        wrong_counts.apppend(sum(1 for guess in Guess.query.filter_by(species=species) if guess.sound.species == alternative))
+
+    weigths = [1 + count for count in wrong_counts]
+    return random.shuffle([species] + random.choices(alternatives, weights=weigths, k=n_alternatives))
 
 
 @app.route('/', methods=['GET', 'POST'])
