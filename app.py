@@ -48,17 +48,19 @@ class Guess(db.Model):
     species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
 
 
-def get_species() -> Species:
+def get_sound() -> Sound:
 
-    candidates = Species.query.all()
+    candidate_species = Species.query.all()
 
     wrong_counts = []
-    for species in candidates:
+    for species in candidate_species:
         wrong_counts.append(sum(1 for guess in Guess.query.filter_by(species=species)
                                 if not guess.species == guess.sound.species))
 
     weights = [1 + count for count in wrong_counts]
-    return random.choices(candidates, weights=weights, k=1)
+    selected_species = random.choices(candidate_species, weights=weights, k=1)
+
+    return random.sample(Sound.query.filter_by(species=selected_species).all())
 
 
 def get_choices(species: Species, n_alternatives: int = 3) -> List[Species]:
