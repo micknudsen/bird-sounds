@@ -37,6 +37,7 @@ class Sound(db.Model):
     path = db.Column(db.String(64), unique=True)
     species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
     behavior_id = db.Column(db.Integer, db.ForeignKey('behavior.id'))
+    guesses = db.relation('Guess', backref='sound')
 
 
 class Guess(db.Model):
