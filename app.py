@@ -1,6 +1,7 @@
 import os
 import random
 
+from dataclasses import dataclass
 from typing import List
 
 from flask import Flask, render_template, redirect, request, session, url_for
@@ -78,6 +79,12 @@ def get_choices(sound: Sound, n_alternatives: int = 3) -> List[Species]:
     random.shuffle(choices)
 
     return choices
+
+
+@dataclass
+class Quiz:
+    sound: Sound
+    choices: List[Species]
 
 
 @app.route('/', methods=['GET', 'POST'])
