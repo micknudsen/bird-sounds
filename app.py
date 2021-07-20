@@ -63,17 +63,17 @@ def get_sound() -> Sound:
     return random.sample(Sound.query.filter_by(species=selected_species).all(), k=1)[0]
 
 
-def get_choices(species: Species, n_alternatives: int = 3) -> List[Species]:
+def get_choices(sound: Sound, n_alternatives: int = 3) -> List[Species]:
 
-    alternatives = [alternative for alternative in Species.query.all() if not alternative == species]
+    alternatives = [alternative for alternative in Species.query.all() if not alternative == sound.species]
 
     wrong_counts = []
     for alternative in alternatives:
-        wrong_counts.append(sum(1 for guess in Guess.query.filter_by(species=species)
+        wrong_counts.append(sum(1 for guess in Guess.query.filter_by(species=sound.species)
                                 if guess.sound.species == alternative))
 
     weigths = [1 + count for count in wrong_counts]
-    choices = [species] + random.choices(alternatives, weights=weigths, k=n_alternatives)
+    choices = [sound.species] + random.choices(alternatives, weights=weigths, k=n_alternatives)
 
     random.shuffle(choices)
 
@@ -87,10 +87,7 @@ def index():
         return redirect(url_for('answer'))
 
     sound = get_sound()
-    choices = get_choices(species=sound.species)
-
-    print(sound)
-    print(choices)
+    choices = get_choices(sound=sound)
 
     return render_template('index.html', sound=sound, choices=choices)
 
