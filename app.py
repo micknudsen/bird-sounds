@@ -58,9 +58,9 @@ def get_sound() -> Sound:
                                 if not guess.species == guess.sound.species))
 
     weights = [1 + count for count in wrong_counts]
-    selected_species = random.choices(candidate_species, weights=weights, k=1)
+    selected_species = random.choices(candidate_species, weights=weights, k=1)[0]
 
-    return random.sample(Sound.query.filter_by(species=selected_species).all())
+    return random.sample(Sound.query.filter_by(species=selected_species).all(), k=1)[0]
 
 
 def get_choices(species: Species, n_alternatives: int = 3) -> List[Species]:
@@ -69,10 +69,15 @@ def get_choices(species: Species, n_alternatives: int = 3) -> List[Species]:
 
     wrong_counts = []
     for alternative in alternatives:
-        wrong_counts.apppend(sum(1 for guess in Guess.query.filter_by(species=species) if guess.sound.species == alternative))
+        wrong_counts.append(sum(1 for guess in Guess.query.filter_by(species=species)
+                                if guess.sound.species == alternative))
 
     weigths = [1 + count for count in wrong_counts]
-    return random.shuffle([species] + random.choices(alternatives, weights=weigths, k=n_alternatives))
+    choices = [species] + random.choices(alternatives, weights=weigths, k=n_alternatives)
+
+    random.shuffle(choices)
+
+    return choices
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -81,12 +86,11 @@ def index():
     if request.method == 'POST':
         return redirect(url_for('answer'))
 
-    choices = random.sample(Species.query.all(), 4)
-    correct = random.choice(choices)
+    sound = get_sound()
+    choices = get_choices(species=sound.species)
 
-    sound = random.choice(Sound.query.filter_by(species=correct).all())
-
-    session['correct_species_id'] = correct.id
+    print(sound)
+    print(choices)
 
     return render_template('index.html', sound=sound, choices=choices)
 
