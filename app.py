@@ -104,13 +104,13 @@ def make_quiz() -> Quiz:
 def index():
 
     if request.method == 'POST':
-        session['choice_form_index'] = request.form.get('choice')
+        session['species_id_guess'] = session['species_ids_choices'][int(request.form.get('choice_index')) - 1]
         return redirect(url_for('answer'))
 
     quiz = make_quiz()
 
-    session['correct_species_id'] = quiz.sound.species.id
-    session['choice_species_ids'] = [species.id for species in quiz.choices]
+    session['species_id_correct'] = quiz.sound.species.id
+    session['species_ids_choices'] = [species.id for species in quiz.choices]
 
     return render_template('index.html', quiz=quiz)
 
@@ -118,6 +118,7 @@ def index():
 @app.route('/answer')
 def answer():
 
-    correct = Species.query.get(session['correct_species_id'])
+    correct_species = Species.query.get(session['species_id_correct'])
+    guessed_species = Species.query.get(session['species_id_guess'])
 
-    return render_template('answer.html', correct=correct)
+    return render_template('answer.html', correct_species=correct_species, guessed_species=guessed_species)
