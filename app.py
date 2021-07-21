@@ -64,7 +64,7 @@ def get_sound() -> Sound:
     return random.sample(Sound.query.filter_by(species=selected_species).all(), k=1)[0]
 
 
-def get_choices(sound: Sound, n_alternatives: int = 3) -> List[Species]:
+def get_choices(sound: Sound) -> List[Species]:
 
     alternatives = [alternative for alternative in Species.query.all() if not alternative == sound.species]
 
@@ -74,7 +74,7 @@ def get_choices(sound: Sound, n_alternatives: int = 3) -> List[Species]:
                                 if guess.sound.species == alternative))
 
     weigths = [1 + count for count in wrong_counts]
-    choices = [sound.species] + random.choices(alternatives, weights=weigths, k=n_alternatives)
+    choices = [sound.species] + random.choices(alternatives, weights=weigths, k=3)
 
     random.shuffle(choices)
 
@@ -83,23 +83,39 @@ def get_choices(sound: Sound, n_alternatives: int = 3) -> List[Species]:
 
 @dataclass
 class Quiz:
+
     sound: Sound
     choices: List[Species]
+
+    def __post_init__(self) -> None:
+        if self.sound.species not in self.choices:
+            raise Exception('Impossible Quiz!')
+
+
+def make_quiz() -> Quiz:
+
+    sound = get_sound()
+    choices = get_choices(sound=sound)
+
+    return Quiz(sound=sound, choices=choices)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
 
     if request.method == 'POST':
+        session['choice_form_index'] = request.form.get('choice')
         return redirect(url_for('answer'))
 
-    sound = get_sound()
-    choices = get_choices(sound=sound)
+    quiz = make_quiz()
 
-    return render_template('index.html', sound=sound, choices=choices)
+    session['correct_species_id'] = quiz.sound.species.id
+    session['choice_species_ids'] = [species.id for species in quiz.choices]
+
+    return render_template('index.html', quiz=quiz)
 
 
-@app.route('/answer', methods=['GET', 'POST'])
+@app.route('/answer')
 def answer():
 
     correct = Species.query.get(session['correct_species_id'])

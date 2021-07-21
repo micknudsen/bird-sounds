@@ -8,11 +8,11 @@
         <h1>Hello, World!</h1>
     </div>
     <audio controls>
-        <source src="{{ sound.path }}" type="audio/mpeg">
+        <source src="{{ quiz.sound.path }}" type="audio/mpeg">
     </audio>
     <form method="POST">
-    {% for species in choices %}
-        <button type="submit" class="btn btn-primary btn-lg btn-block" name="guess" value="{{ loop.index }}">{{ species.name }}</button>
+    {% for species in quiz.choices %}
+        <button type="submit" class="btn btn-primary btn-lg btn-block" name="choice" value="{{ loop.index }}">{{ species.name }}</button>
     {% endfor %}
     </form>
 </div>
