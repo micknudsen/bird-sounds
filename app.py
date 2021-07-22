@@ -49,12 +49,6 @@ class Guess(db.Model):
     species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
 
 
-def count_wrong_guesses(species: Species) -> int:
-    return sum(1 for guess in Guess.query.all()
-               if guess.species == species
-               and not guess.sound.species == species)
-
-
 def get_sound() -> Sound:
 
     candidate_species = Species.query.all()
