@@ -1,10 +1,6 @@
 import os
-import random
 
-from dataclasses import dataclass
-from typing import List
-
-from flask import Flask, render_template, redirect, request, session, url_for
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 
