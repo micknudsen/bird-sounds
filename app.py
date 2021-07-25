@@ -1,4 +1,5 @@
 import os
+import random
 
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
@@ -37,6 +38,16 @@ class Sound(db.Model):
     behavior_id = db.Column(db.Integer, db.ForeignKey('behavior.id'))
 
 
+def get_sound() -> Sound:
+    """Picks a random species and return as random sound from that species"""
+    return random.choice(Sound.query.filter_by(
+        species=random.choice(Species.query.all())).all())
+
+
 @app.route('/')
 def index():
+
+    sound = get_sound()
+    print(sound.path)
+
     return render_template('index.html')
