@@ -52,6 +52,25 @@ class Quiz:
             raise Exception('Impossible Quiz!')
 
 
+def new_quiz() -> Quiz:
+
+    # Pick a random species as the correct species
+    # and pick a random sound from that species.
+    correct_species = random.choice(Species.query.all())
+    sound = random.choice(Sound.query.filter_by(species=correct_species).all())
+
+    # Now pick three other species to act a candidates.
+    other_candidate_species = random.sample(
+        [species for species in Species.query.all()
+         if not species == correct_species],
+        k=3)
+
+    choices = [correct_species] + other_candidate_species
+    random.shuffle(choices)
+
+    return Quiz(sound=sound, choices=choices)
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
