@@ -41,12 +41,6 @@ class Sound(db.Model):
     behavior_id = db.Column(db.Integer, db.ForeignKey('behavior.id'))
 
 
-class Guess(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    correct_species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
-    guessed_species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
-
-
 @app.route('/')
 def index():
     return render_template('index.html')
