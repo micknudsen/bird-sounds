@@ -7,5 +7,13 @@
     <div class="page-header">
         <h1>Hello, World!</h1>
     </div>
+    <audio controls>
+        <source src="{{ quiz.sound.path }}" type="audio/mpeg">
+    </audio>
+    <form method="POST">
+        {% for species in quiz.choices %}
+            <button type="submit" class="btn btn-primary btn-lg btn-block" name="choice_index" value="{{ loop.index - 1 }}">{{ species.name }}</button>
+        {% endfor %}
+    </form>
 </div>
 {% endblock %}

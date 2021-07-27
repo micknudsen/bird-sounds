@@ -4,7 +4,7 @@ import random
 from dataclasses import dataclass
 from typing import List
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, session, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 
@@ -71,6 +71,28 @@ def new_quiz() -> Quiz:
     return Quiz(sound=sound, choices=choices)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+
+    if request.method == 'POST':
+        session['species_id_guessed'] = \
+            session['species_ids_choices'][int(request.form.get('choice_index'))]
+        return redirect(url_for('answer'))
+
+    quiz = new_quiz()
+
+    session['species_id_correct'] = quiz.sound.species.id
+    session['species_ids_choices'] = [species.id for species in quiz.choices]
+
+    return render_template('index.html', quiz=quiz)
+
+
+@app.route('/answer')
+def answer():
+
+    correct_species = Species.query.get(session['species_id_correct'])
+    guessed_species = Species.query.get(session['species_id_guessed'])
+
+    return render_template('answer.html',
+                           correct_species=correct_species,
+                           guessed_species=guessed_species)
