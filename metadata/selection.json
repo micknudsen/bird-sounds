@@ -1,20 +1,44 @@
 {
     "Acrocephalus palustris": {
-        "behaviors": ["song"]
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Kærsanger",
+            "english": "Marsh warbler"
+        }
     },
     "Hippolais icterina": {
-        "behaviors": ["song"]
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Gulbug",
+            "english": "Icterine warbler"
+        }
     },
     "Phylloscopus collybita": {
-        "behaviors": ["song"]
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Gransanger",
+            "english": "Common chiffchaff"
+        }
     },
     "Phylloscopus trochilus": {
-        "behaviors": ["song"]
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Løvsanger",
+            "english": "Willow warbler"
+        }
     },
     "Sylvia atricapilla": {
-        "behaviors": ["song"]
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Munk",
+            "english": "Eurasian blackcap"
+        }
     },
     "Sylvia borin": {
-        "behaviors": ["song"]
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Havesanger",
+            "english": "Garden warbler"
+        }
     }
 }
