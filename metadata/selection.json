@@ -1,8 +1,20 @@
 {
-    "Acrocephalus palustris": ["song"],
-    "Hippolais icterina": ["song"],
-    "Phylloscopus collybita": ["song"],
-    "Phylloscopus trochilus": ["song"],
-    "Sylvia atricapilla": ["song"],
-    "Sylvia borin": ["song"]
+    "Acrocephalus palustris": {
+        "behaviors": ["song"]
+    },
+    "Hippolais icterina": {
+        "behaviors": ["song"]
+    },
+    "Phylloscopus collybita": {
+        "behaviors": ["song"]
+    },
+    "Phylloscopus trochilus": {
+        "behaviors": ["song"]
+    },
+    "Sylvia atricapilla": {
+        "behaviors": ["song"]
+    },
+    "Sylvia borin": {
+        "behaviors": ["song"]
+    }
 }

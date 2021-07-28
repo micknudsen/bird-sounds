@@ -47,8 +47,8 @@ def download(data, species, behavior):
 logging.info('Downloading sounds')
 
 with open('metadata/selection.json', 'r') as f:
-    for species, behaviors in json.load(f).items():
-        for behavior in behaviors:
+    for species, metadata in json.load(f).items():
+        for behavior in metadata['behaviors']:
             download(data=data, species=species, behavior=behavior)
 
 logging.info('Updating database')
