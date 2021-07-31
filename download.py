@@ -9,7 +9,7 @@ from collections import defaultdict
 import pandas as pd
 from tqdm import tqdm
 
-from app import db, Species, Behavior, Sound
+from app import db, Language, Species, Behavior, Sound
 
 
 logging.basicConfig(format='[%(levelname)s] %(asctime)s %(message)s',
@@ -80,5 +80,12 @@ for path in pathlib.Path('static/sounds').rglob('*.mp3'):
     if not sound:
         sound = Sound(path=str(path), species=species, behavior=behavior)
         db.session.add(sound)
+
+for species in Species.query.all():
+    for entry in dictionary[species_name].items():
+        language = Language.query.filter_by(name=entry[0]).first()
+        if not language:
+            language = Language(name=entry[0])
+            db.session.add(language)
 
 db.session.commit()
