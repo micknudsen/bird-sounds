@@ -41,6 +41,11 @@ class Sound(db.Model):
     behavior_id = db.Column(db.Integer, db.ForeignKey('behavior.id'))
 
 
+class Language(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+
+
 @dataclass
 class Quiz:
 
