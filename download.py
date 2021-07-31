@@ -4,6 +4,8 @@ import os
 import pathlib
 import urllib.request
 
+from collections import defaultdict
+
 import pandas as pd
 from tqdm import tqdm
 
@@ -46,10 +48,14 @@ def download(data, species, behavior):
 
 logging.info('Downloading sounds')
 
+dictionary = defaultdict(dict)
+
 with open('metadata/selection.json', 'r') as f:
     for species, metadata in json.load(f).items():
         for behavior in metadata['behaviors']:
             download(data=data, species=species, behavior=behavior)
+        for language, translation in metadata['translations'].items():
+            dictionary[species][language] = translation
 
 logging.info('Updating database')
 
