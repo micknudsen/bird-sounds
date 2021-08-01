@@ -88,7 +88,7 @@ for species in Species.query.all():
             language = Language(name=language_)
             db.session.add(language)
             db.session.commit()
-        translation = Translation(name=translation_, language_id=language.id, species_id=species.id)
+        translation = Translation(name=translation_, language=language, species=species)
         db.session.add(translation)
 
 db.session.commit()

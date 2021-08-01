@@ -26,6 +26,7 @@ class Species(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
     sounds = db.relation('Sound', backref='species')
+    translations = db.relation('Translation', backref='species')
 
 
 class Behavior(db.Model):
@@ -44,6 +45,7 @@ class Sound(db.Model):
 class Language(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
+    translations = db.relation('Translation', backref='language')
 
 
 class Translation(db.Model):
