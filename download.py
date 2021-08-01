@@ -82,10 +82,10 @@ for path in pathlib.Path('static/sounds').rglob('*.mp3'):
         db.session.add(sound)
 
 for species in Species.query.all():
-    for entry in dictionary[species_name].items():
-        language = Language.query.filter_by(name=entry[0]).first()
+    for language_, translation_ in dictionary[species_name].items():
+        language = Language.query.filter_by(name=language_).first()
         if not language:
-            language = Language(name=entry[0])
+            language = Language(name=language_)
             db.session.add(language)
 
 db.session.commit()
