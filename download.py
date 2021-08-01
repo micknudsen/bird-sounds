@@ -9,7 +9,7 @@ from collections import defaultdict
 import pandas as pd
 from tqdm import tqdm
 
-from app import db, Language, Species, Behavior, Sound
+from app import db, Language, Species, Behavior, Sound, Translation
 
 
 logging.basicConfig(format='[%(levelname)s] %(asctime)s %(message)s',
@@ -87,5 +87,8 @@ for species in Species.query.all():
         if not language:
             language = Language(name=language_)
             db.session.add(language)
+            db.session.commit()
+        translation = Translation(name=translation_, language_id=language.id, species_id=species.id)
+        db.session.add(translation)
 
 db.session.commit()
