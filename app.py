@@ -46,6 +46,13 @@ class Language(db.Model):
     name = db.Column(db.String(64), unique=True)
 
 
+class Translation(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
+    language_id = db.Column(db.Integer, db.ForeignKey('language.id'))
+
+
 @dataclass
 class Quiz:
 
