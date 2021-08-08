@@ -61,7 +61,7 @@ logging.info('Updating database')
 
 db.create_all()
 
-for path in pathlib.Path('static/sounds').rglob('*.mp3'):
+for path in tqdm(list(pathlib.Path('static/sounds').rglob('*.mp3'))):
 
     species_name = path.parts[2].replace('_', ' ').capitalize()
     behavior_name = path.parts[3].replace('_', ' ').capitalize()
