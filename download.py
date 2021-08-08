@@ -82,13 +82,14 @@ for path in tqdm(list(pathlib.Path('static/sounds').rglob('*.mp3'))):
         db.session.add(sound)
 
 for species in Species.query.all():
-    for language_, translation_ in dictionary[species_name].items():
+    for language_, translation_ in dictionary[species.name].items():
         language = Language.query.filter_by(name=language_).first()
         if not language:
             language = Language(name=language_)
             db.session.add(language)
-            db.session.commit()  # Why is this needed?
-        translation = Translation(name=translation_, language=language, species=species)
-        db.session.add(translation)
+        translation = Translation.query.filter_by(name=translation_, language=language, species=species).first()
+        if not translation:
+            translation = Translation(name=translation_, language=language, species=species)
+            db.session.add(translation)
 
 db.session.commit()
