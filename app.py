@@ -19,6 +19,10 @@ app.config['SECRET_KEY'] = '42'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+
+VERNACULAR_LANGUAGE = 'danish'
+
+
 db = SQLAlchemy(app)
 
 
@@ -27,6 +31,13 @@ class Species(db.Model):
     name = db.Column(db.String(64), unique=True)
     sounds = db.relation('Sound', backref='species')
     translations = db.relation('Translation', backref='species')
+
+    @property
+    def vernacular_name(self) -> str:
+        language = Language.query.filter_by(name=VERNACULAR_LANGUAGE).first()
+        if (translation := Translation.query.filter_by(species=self, language=language).first()):
+            return translation.name
+        return self.name
 
 
 class Behavior(db.Model):

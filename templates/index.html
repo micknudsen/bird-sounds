@@ -12,7 +12,7 @@
     </audio>
     <form method="POST">
         {% for species in quiz.choices %}
-            <button type="submit" class="btn btn-primary btn-lg btn-block" name="choice_index" value="{{ loop.index - 1 }}">{{ species.name }}</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" name="choice_index" value="{{ loop.index - 1 }}">{{ species.vernacular_name }}</button>
         {% endfor %}
     </form>
 </div>
