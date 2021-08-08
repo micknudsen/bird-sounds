@@ -87,7 +87,7 @@ for species in Species.query.all():
         if not language:
             language = Language(name=language_)
             db.session.add(language)
-            db.session.commit()
+            db.session.commit()  # Why is this needed?
         translation = Translation(name=translation_, language=language, species=species)
         db.session.add(translation)
 
