@@ -6,6 +6,20 @@
             "english": "Marsh warbler"
         }
     },
+    "Certhia familiaris": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Træløber",
+            "english": "Eurasian treecreeper"
+        }
+    },
+    "Certhia brachydactyla": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Korttået træløber",
+            "english": "Short-toed treecreeper"
+        }
+    },
     "Hippolais icterina": {
         "behaviors": ["song"],
         "translations": {
