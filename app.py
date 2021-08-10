@@ -84,14 +84,8 @@ def new_quiz() -> Quiz:
     correct_species = random.choice(Species.query.all())
     sound = random.choice(Sound.query.filter_by(species=correct_species).all())
 
-    # Now pick three other species to act a candidates.
-    other_candidate_species = random.sample(
-        [species for species in Species.query.all()
-         if not species == correct_species],
-        k=3)
-
-    choices = [correct_species] + other_candidate_species
-    random.shuffle(choices)
+    choices = sorted(Species.query.all(),
+                     key=lambda species: species.vernacular_name)
 
     return Quiz(sound=sound, choices=choices)
 
