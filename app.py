@@ -100,6 +100,7 @@ def index():
 
     quiz = new_quiz()
 
+    session['sound_id'] = quiz.sound.id
     session['species_id_correct'] = quiz.sound.species.id
     session['species_ids_choices'] = [species.id for species in quiz.choices]
 
@@ -109,9 +110,11 @@ def index():
 @app.route('/answer')
 def answer():
 
+    sound = Sound.query.get(session['sound_id'])
     correct_species = Species.query.get(session['species_id_correct'])
     guessed_species = Species.query.get(session['species_id_guessed'])
 
     return render_template('answer.html',
+                           sound=sound,
                            correct_species=correct_species,
                            guessed_species=guessed_species)
