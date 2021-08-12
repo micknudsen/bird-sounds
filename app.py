@@ -31,6 +31,7 @@ class Species(db.Model):
     name = db.Column(db.String(64), unique=True)
     sounds = db.relation('Sound', backref='species')
     translations = db.relation('Translation', backref='species')
+    guesses = db.relation('Guess', backref='species')
 
     @property
     def vernacular_name(self) -> str:
@@ -51,6 +52,7 @@ class Sound(db.Model):
     path = db.Column(db.String(64), unique=True)
     species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
     behavior_id = db.Column(db.Integer, db.ForeignKey('behavior.id'))
+    guesses = db.relation('Guess', backref='sound')
 
 
 class Language(db.Model):
@@ -64,6 +66,15 @@ class Translation(db.Model):
     name = db.Column(db.String(64))
     species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
     language_id = db.Column(db.Integer, db.ForeignKey('language.id'))
+
+
+class Guess(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sound_id = db.Column(db.Integer, db.ForeignKey('sound.id'))
+    species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
+
+    def is_correct(self) -> bool:
+        return self.sound.species == self.species
 
 
 @dataclass
@@ -113,6 +124,10 @@ def answer():
     sound = Sound.query.get(session['sound_id'])
     correct_species = Species.query.get(session['species_id_correct'])
     guessed_species = Species.query.get(session['species_id_guessed'])
+
+    guess = Guess(sound=sound, species=guessed_species)
+    db.session.add(guess)
+    db.session.commit()
 
     return render_template('answer.html',
                            sound=sound,
