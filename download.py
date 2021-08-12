@@ -15,15 +15,22 @@ from app import db, Language, Species, Behavior, Sound, Translation
 logging.basicConfig(format='[%(levelname)s] %(asctime)s %(message)s',
                     datefmt='%Y/%m/%d %H:%M:%S', level=logging.INFO)
 
-logging.info('Parsing metadata')
+PARSED_METADATA = 'metadata/metadata.parsed.tsv'
 
-meatadata = pd.read_csv('metadata/xeno-canto/verbatim.txt', sep='\t', low_memory=False)
-meatadata = meatadata[['gbifID', 'behavior', 'scientificName']].set_index('gbifID')
+logging.info('Importing metadata')
 
-multimedia = pd.read_csv('metadata/xeno-canto/multimedia.txt', sep='\t', low_memory=False)
-multimedia = multimedia[multimedia['type'] == 'Sound'][['gbifID', 'identifier']].set_index('gbifID')
+try:
+    data = pd.read_csv(PARSED_METADATA, sep='\t')
 
-data = meatadata.join(multimedia)
+except FileNotFoundError:
+    meatadata = pd.read_csv('metadata/xeno-canto/verbatim.txt', sep='\t', low_memory=False)
+    meatadata = meatadata[['gbifID', 'behavior', 'scientificName']].set_index('gbifID')
+
+    multimedia = pd.read_csv('metadata/xeno-canto/multimedia.txt', sep='\t', low_memory=False)
+    multimedia = multimedia[multimedia['type'] == 'Sound'][['gbifID', 'identifier']].set_index('gbifID')
+
+    data = meatadata.join(multimedia)
+    data.to_csv(PARSED_METADATA, sep='\t')
 
 
 def download(data, species, behavior):

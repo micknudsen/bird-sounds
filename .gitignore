@@ -143,3 +143,6 @@ static/
 # Databases
 *.sqlite
 *.sqlite-journal
+
+# Metadata
+metadata/metadata.parsed.tsv
