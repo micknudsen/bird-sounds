@@ -1,32 +1,4 @@
 {
-    "Acrocephalus palustris": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Kærsanger",
-            "english": "Marsh warbler"
-        }
-    },
-    "Certhia familiaris": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Træløber",
-            "english": "Eurasian treecreeper"
-        }
-    },
-    "Certhia brachydactyla": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Korttået træløber",
-            "english": "Short-toed treecreeper"
-        }
-    },
-    "Hippolais icterina": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Gulbug",
-            "english": "Icterine warbler"
-        }
-    },
     "Phylloscopus collybita": {
         "behaviors": ["song"],
         "translations": {
@@ -39,20 +11,6 @@
         "translations": {
             "danish": "Løvsanger",
             "english": "Willow warbler"
-        }
-    },
-    "Sylvia atricapilla": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Munk",
-            "english": "Eurasian blackcap"
-        }
-    },
-    "Sylvia borin": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Havesanger",
-            "english": "Garden warbler"
         }
     }
 }
