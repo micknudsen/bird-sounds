@@ -55,7 +55,7 @@ To download sounds (already downloaded sounds will not be re-downloaded) and upd
 
 ## Running
 
-To run the app, we must first tell flask which app to use. The default vernacular language is Danish. If you want a different language, this is the place to specify it, too.
+To run the app, you must first tell flask which app to use. The default vernacular language is Danish. If you want a different language, this is the place to specify it, too.
 
 ```
 $ export FLASK_APP=app
