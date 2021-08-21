@@ -1,16 +1,16 @@
 {
-    "Phylloscopus collybita": {
+    "Cyanistes caeruleus": {
         "behaviors": ["song"],
         "translations": {
-            "danish": "Gransanger",
-            "english": "Common chiffchaff"
+            "danish": "Blåmejse",
+            "english": "Eurasian blue tit"
         }
     },
-    "Phylloscopus trochilus": {
+    "Parus major": {
         "behaviors": ["song"],
         "translations": {
-            "danish": "Løvsanger",
-            "english": "Willow warbler"
+            "danish": "Musvit",
+            "english": "Great tit"
         }
     }
 }
