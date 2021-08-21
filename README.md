@@ -66,12 +66,12 @@ Now the app is lauched using `flask run` and can be accessed in a browser using 
 
 ```
 $ flask run
- * Serving Flask app 'app.py' (lazy loading)
- * Environment: production
-   WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
- * Debug mode: off
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
- ```
+* Serving Flask app 'app.py' (lazy loading)
+* Environment: production
+  WARNING: This is a development server. Do not use it in a production deployment.
+  Use a production WSGI server instead.
+* Debug mode: off
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+```
 
 The app plays a random bird sound and offers all possible species in the database as choices. Make a guess by clicking on species name. The app then shows the correct species and allows you to replay the sound. Click on the species name to get a new sound.
