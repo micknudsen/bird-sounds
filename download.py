@@ -23,13 +23,13 @@ try:
     data = pd.read_csv(PARSED_METADATA, sep='\t')
 
 except FileNotFoundError:
-    meatadata = pd.read_csv('metadata/xeno-canto/verbatim.txt', sep='\t', low_memory=False)
-    meatadata = meatadata[['gbifID', 'behavior', 'scientificName']].set_index('gbifID')
+    metadata = pd.read_csv('metadata/xeno-canto/verbatim.txt', sep='\t', low_memory=False)
+    metadata = metadata[['gbifID', 'behavior', 'scientificName']].set_index('gbifID')
 
     multimedia = pd.read_csv('metadata/xeno-canto/multimedia.txt', sep='\t', low_memory=False)
     multimedia = multimedia[multimedia['type'] == 'Sound'][['gbifID', 'identifier']].set_index('gbifID')
 
-    data = meatadata.join(multimedia)
+    data = metadata.join(multimedia)
     data.to_csv(PARSED_METADATA, sep='\t')
 
 
