@@ -20,7 +20,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'da
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-VERNACULAR_LANGUAGE = 'danish'
+vernacular_language = os.getenv('VERNACULAR_LANGUAGE', default='danish')
 
 
 db = SQLAlchemy(app)
@@ -35,7 +35,7 @@ class Species(db.Model):
 
     @property
     def vernacular_name(self) -> str:
-        language = Language.query.filter_by(name=VERNACULAR_LANGUAGE).first()
+        language = Language.query.filter_by(name=vernacular_language).first()
         if (translation := Translation.query.filter_by(species=self, language=language).first()):
             return translation.name
         return self.name
