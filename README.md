@@ -65,7 +65,7 @@ $ export VERNACULAR_LANGUAGE=english
 Now the app is lauched using `flask run` and can be accessed in a browser using the address provided in the output:
 
 ```
-flask run
+$ flask run
  * Serving Flask app 'app.py' (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
