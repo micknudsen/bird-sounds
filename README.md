@@ -1,6 +1,6 @@
 # Bird Sounds
 
-I wrote this small [flask](https://flask.palletsprojects.com/en/2.0.x/) app to help me practice bird sound identification. It is neither advanced nor beautiful, but it gets the jobs done. Sharing the code here just in case anybody else would find it useful.
+I wrote this small [flask](https://flask.palletsprojects.com/en/2.0.x/) app to help me practice bird sound identification. It is neither advanced nor beautiful, but it gets the jobs done. I am sharing the code here just in case anybody else would find it useful.
 
 ## Environment
 
