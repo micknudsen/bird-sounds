@@ -51,7 +51,7 @@ $ cat metadata/selection.json
 }
 ```
 
-To download sound (already downloaded sounds will not be re-downloaded) and update the database, simply run `python download.py`.
+To download sounds (already downloaded sounds will not be re-downloaded) and update the database, simply run `python download.py`.
 
 ## Running
 
