@@ -30,3 +30,46 @@ metadata/xeno-canto
 ```
 
 Now go ahead and fill out `metadata/selection.json` with information about the species and the behaviors you would like to download. Here is an example with just two species:
+
+```
+$ cat metadata/selection.json
+{
+    "Cyanistes caeruleus": {
+        "behaviors": ["song", "alarm call"],
+        "translations": {
+            "danish": "Blåmejse",
+            "english": "Eurasian blue tit"
+        }
+    },
+    "Parus major": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Musvit",
+            "english": "Great tit"
+        }
+    }
+}
+```
+
+To download sound (already downloaded sounds will not be re-downloaded) and update the database, simply run `python download.py`.
+
+## Running
+
+To run the app, we must first tell flask which app to use. The default vernacular language is Danish. If you want a different language, this is the place to specify it, too.
+
+```
+$ export FLASK_APP=app
+$ export VERNACULAR_LANGUAGE=english
+```
+
+Now the app is lauched using `flask run` and can be accessed in a browser using the address provided in the output:
+
+```
+flask run
+ * Serving Flask app 'app.py' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ ```
