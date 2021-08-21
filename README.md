@@ -73,3 +73,5 @@ flask run
  * Debug mode: off
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
  ```
+
+The app plays a random bird sound and offers all possible species in the database as choices. Make a guess by clicking on species name. The app then shows the correct species and allows you to replay the sound. Click on the species name to get a new sound.
