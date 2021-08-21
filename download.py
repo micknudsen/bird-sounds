@@ -20,7 +20,7 @@ PARSED_METADATA = 'metadata/metadata.parsed.tsv'
 logging.info('Importing metadata')
 
 try:
-    data = pd.read_csv(PARSED_METADATA, sep='\t')
+    data = pd.read_csv(PARSED_METADATA, sep='\t').set_index('gbifID')
 
 except FileNotFoundError:
     metadata = pd.read_csv('metadata/xeno-canto/verbatim.txt', sep='\t', low_memory=False)
