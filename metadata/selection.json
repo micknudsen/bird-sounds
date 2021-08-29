@@ -1,6 +1,6 @@
 {
     "Cyanistes caeruleus": {
-        "behaviors": ["song", "alarm call"],
+        "behaviors": ["song"],
         "translations": {
             "danish": "Blåmejse",
             "english": "Eurasian blue tit"
