@@ -7,13 +7,15 @@ import urllib.request
 from collections import defaultdict
 
 import pandas as pd
-from tqdm import tqdm
+
+from rich.logging import RichHandler
+from rich.progress import track
 
 from app import db, Language, Species, Behavior, Sound, Translation
 
 
 logging.basicConfig(format='[%(levelname)s] %(asctime)s %(message)s',
-                    datefmt='%Y/%m/%d %H:%M:%S', level=logging.INFO)
+                    datefmt='%Y/%m/%d %H:%M:%S', level=logging.INFO, handlers=[RichHandler()])
 
 PARSED_METADATA = 'metadata/metadata.parsed.tsv'
 
@@ -40,7 +42,7 @@ def download(data, species, behavior):
     simple_species = species.replace(' ', '_').lower()
     simple_behavior = behavior.replace(' ', '_').lower()
 
-    for gbif_id, row in tqdm(data_subset.iterrows(), total=len(data_subset), desc=f'{species} ({behavior.capitalize()})'):
+    for gbif_id, row in track(data_subset.iterrows(), total=len(data_subset), description=f'{species} ({behavior.capitalize()})', transient=True):
 
         download_link = row['identifier']
         local_file = os.path.join('static', 'sounds', simple_species, simple_behavior, f'{gbif_id}.mp3')
@@ -68,7 +70,7 @@ logging.info('Updating database')
 
 db.create_all()
 
-for path in tqdm(list(pathlib.Path('static/sounds').rglob('*.mp3'))):
+for path in track(list(pathlib.Path('static/sounds').rglob('*.mp3')), transient=True):
 
     species_name = path.parts[2].replace('_', ' ').capitalize()
     behavior_name = path.parts[3].replace('_', ' ').capitalize()
