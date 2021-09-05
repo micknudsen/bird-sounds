@@ -12,12 +12,5 @@
             "danish": "Musvit",
             "english": "Great tit"
         }
-    },
-    "Troglodytes troglodytes": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Gærdesmutte",
-            "english": "Eurasian wren"
-        }
     }
 }
