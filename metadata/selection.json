@@ -6,6 +6,13 @@
             "english": "Eurasian blue tit"
         }
     },
+    "Fringilla coelebs": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Bogfinke",
+            "english": "Common chaffinch"
+        }
+    },
     "Parus major": {
         "behaviors": ["song"],
         "translations": {
@@ -25,6 +32,13 @@
         "translations": {
             "danish": "Løvsanger",
             "english": "Willow warbler"
+        }
+    },
+    "Troglodytes troglodytes": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Gærdesmutte",
+            "english": "Eurasian wren"
         }
     }
 }
