@@ -133,3 +133,8 @@ def answer():
                            sound=sound,
                            correct_species=correct_species,
                            guessed_species=guessed_species)
+
+
+@app.route('/status')
+def status():
+    return render_template('status.html')
