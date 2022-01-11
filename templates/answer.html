@@ -15,6 +15,6 @@
     {% else %}
         {% set button_style="btn-danger" %}
     {% endif %}
-    <a class="btn {{button_style}} btn-lg btn-block" href="{{ url_for('index') }}">{{correct_species.vernacular_name}}</a></button>
+    <a class="btn {{ button_style }} btn-lg btn-block" href="{{ url_for('index') }}">{{correct_species.vernacular_name}}</a></button>
 </div>
 {% endblock %}
