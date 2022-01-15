@@ -105,8 +105,15 @@ def new_quiz() -> Quiz:
 def index():
 
     if request.method == 'POST':
+
         session['species_id_guessed'] = \
             session['species_ids_choices'][int(request.form.get('choice_index'))]
+
+        guess = Guess(sound=Sound.query.get(session['sound_id']),
+                      species=Species.query.get(session['species_id_guessed']))
+        db.session.add(guess)
+        db.session.commit()
+
         return redirect(url_for('answer'))
 
     quiz = new_quiz()
@@ -124,10 +131,6 @@ def answer():
     sound = Sound.query.get(session['sound_id'])
     correct_species = Species.query.get(session['species_id_correct'])
     guessed_species = Species.query.get(session['species_id_guessed'])
-
-    guess = Guess(sound=sound, species=guessed_species)
-    db.session.add(guess)
-    db.session.commit()
 
     return render_template('answer.html',
                            sound=sound,
