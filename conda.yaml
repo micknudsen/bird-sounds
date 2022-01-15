@@ -7,5 +7,5 @@ dependencies:
   - flask-bootstrap ==3.3.7.1
   - flask-sqlalchemy ==2.5.1
   - pandas ==1.3.5
-  - python ==3.10.1
-  - rich ==10.16.2
+  - python ==3.10.2
+  - rich ==11.0.0
