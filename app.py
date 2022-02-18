@@ -2,6 +2,7 @@ import os
 import random
 
 from dataclasses import dataclass
+from enum import Enum
 from typing import List
 
 from flask import Flask, render_template, request, redirect, session, url_for
@@ -24,6 +25,12 @@ vernacular_language = os.getenv('VERNACULAR_LANGUAGE', default='danish')
 
 
 db = SQLAlchemy(app)
+
+
+class Performance(Enum):
+    ACCEPTED = 1
+    FAILED_TOO_FEW_GUESSES = 2
+    FAILED_TOO_MANY_WRONG_GUESSES = 3
 
 
 class Species(db.Model):
