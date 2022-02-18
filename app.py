@@ -23,14 +23,18 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 vernacular_language = os.getenv('VERNACULAR_LANGUAGE', default='danish')
 
+history_length = os.getenv('HIstory_LENGTH', default=100)
+minimum_number_of_guesses = os.getenv('MINIMUM_NUMBER_OF_GUESSES', default=10)
+minimum_fraction_correct = os.getenv('MINIMUM_FRACTION_CORRECT', default=0.9)
+
 
 db = SQLAlchemy(app)
 
 
 class Performance(Enum):
-    ACCEPTED = 1
-    FAILED_TOO_FEW_GUESSES = 2
-    FAILED_TOO_MANY_WRONG_GUESSES = 3
+    ACCEPTED = 'success'
+    FAILED_TOO_FEW_GUESSES = 'warning'
+    FAILED_TOO_MANY_WRONG_GUESSES = 'danger'
 
 
 class Species(db.Model):
@@ -46,6 +50,16 @@ class Species(db.Model):
         if (translation := Translation.query.filter_by(species=self, language=language).first()):
             return translation.name
         return self.name
+
+    @property
+    def performance(self) -> Performance:
+        if len(self.guesses) < minimum_number_of_guesses:
+            return Performance.FAILED_TOO_FEW_GUESSES
+        guesses = self.guesses[-history_length:]
+        fraction_correct = sum(1 for guess in guesses if guess.is_correct()) / len(guesses)
+        if fraction_correct >= minimum_fraction_correct:
+            return Performance.ACCEPTED
+        return Performance.FAILED_TOO_MANY_WRONG_GUESSES
 
 
 class Behavior(db.Model):
@@ -96,7 +110,6 @@ class Quiz:
 
 
 def new_quiz() -> Quiz:
-
     # Pick a random species as the correct species
     # and pick a random sound from that species.
     correct_species = random.choice(Species.query.all())
