@@ -53,9 +53,9 @@ class Species(db.Model):
 
     @property
     def performance(self) -> Performance:
-        if len(self.guesses) < minimum_number_of_guesses:
+        guesses = [guess for guess in Guess.query.all()[-history_length:] if guess.correct_species == self]
+        if len(guesses) < minimum_number_of_guesses:
             return Performance.FAILED_TOO_FEW_GUESSES
-        guesses = self.guesses[-history_length:]
         fraction_correct = sum(1 for guess in guesses if guess.is_correct()) / len(guesses)
         if fraction_correct >= minimum_fraction_correct:
             return Performance.ACCEPTED
@@ -94,8 +94,12 @@ class Guess(db.Model):
     sound_id = db.Column(db.Integer, db.ForeignKey('sound.id'))
     species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
 
+    @property
+    def correct_species(self) -> Species:
+        return self.sound.species
+
     def is_correct(self) -> bool:
-        return self.sound.species == self.species
+        return self.correct_species == self.species
 
 
 @dataclass
