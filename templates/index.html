@@ -12,11 +12,12 @@
     </audio>
     <form method="POST">
         {% for species in quiz.choices %}
-            {% if species.performance.value == 'success' %}
+            {% set performance=species.performance.value %}
+            {% if performance == 'success' %}
                 {% set button_style="btn-success" %}
-            {% elif species.performance.value == 'warning' %}
+            {% elif performance == 'warning' %}
                 {% set button_style="btn-warning" %}
-            {% elif species.performance.value == 'danger' %}
+            {% elif performance == 'danger' %}
                 {% set button_style="btn-danger" %}
             {% endif %}
             <button type="submit" class="btn {{ button_style }} btn-primary btn-lg btn-block" name="choice_index" value="{{ loop.index - 1 }}">{{ species.vernacular_name }}</button>
