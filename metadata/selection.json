@@ -1,11 +1,4 @@
 {
-    "Cyanistes caeruleus": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Blåmejse",
-            "english": "Eurasian blue tit"
-        }
-    },
     "Parus major": {
         "behaviors": ["song"],
         "translations": {
