@@ -71,6 +71,7 @@ class Behavior(db.Model):
 class Sound(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     path = db.Column(db.String(64), unique=True)
+    flagged = db.Column(db.Boolean, default=False)
     species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
     behavior_id = db.Column(db.Integer, db.ForeignKey('behavior.id'))
     guesses = db.relation('Guess', backref='sound')
@@ -117,7 +118,7 @@ def new_quiz() -> Quiz:
     # Pick a random species as the correct species
     # and pick a random sound from that species.
     correct_species = random.choice(Species.query.all())
-    sound = random.choice(Sound.query.filter_by(species=correct_species).all())
+    sound = random.choice(Sound.query.filter_by(species=correct_species, flagged=False).all())
 
     choices = sorted(Species.query.all(),
                      key=lambda species: species.vernacular_name)
@@ -129,6 +130,11 @@ def new_quiz() -> Quiz:
 def index():
 
     if request.method == 'POST':
+
+        if request.form.get('flag_sound'):
+            Sound.query.get(session['sound_id']).flagged = True
+            db.session.commit()
+            return redirect(url_for('index'))
 
         session['species_id_guessed'] = \
             session['species_ids_choices'][int(request.form.get('choice_index'))]

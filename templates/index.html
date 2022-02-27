@@ -10,6 +10,7 @@
     <audio controls style="width: 100%">
         <source src="{{ quiz.sound.path }}" type="audio/mpeg">
     </audio>
+    <hr>
     <form method="POST">
         {% for species in quiz.choices %}
             {% set performance=species.performance.value %}
@@ -22,6 +23,8 @@
             {% endif %}
             <button type="submit" class="btn {{ button_style }} btn-primary btn-lg btn-block" name="choice_index" value="{{ loop.index - 1 }}">{{ species.vernacular_name }}</button>
         {% endfor %}
+        <hr>
+        <button type="submit" class="btn btn-danger btn-primary btn-lg btn-block" name="flag_sound" value="1">Flag Sound</button>
     </form>
 </div>
 {% endblock %}
