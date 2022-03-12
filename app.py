@@ -53,7 +53,7 @@ class Species(db.Model):
 
     @property
     def performance(self) -> Performance:
-        guesses = [guess for guess in Guess.query.all()[-history_length:] if guess.correct_species == self]
+        guesses = [guess for guess in Guess.query.all() if guess.correct_species == self][-history_length:]
         if len(guesses) < minimum_number_of_guesses:
             return Performance.FAILED_TOO_FEW_GUESSES
         fraction_correct = sum(1 for guess in guesses if guess.is_correct()) / len(guesses)
