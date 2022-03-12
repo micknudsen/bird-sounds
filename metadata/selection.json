@@ -1,4 +1,11 @@
 {
+    "Chloris chloris": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Grønirisk",
+            "english": "European greenfinch"
+        }
+    },
     "Cyanistes caeruleus": {
         "behaviors": ["song"],
         "translations": {
