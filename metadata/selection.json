@@ -1,11 +1,4 @@
 {
-    "Chloris chloris": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Grønirisk",
-            "english": "European greenfinch"
-        }
-    },
     "Cyanistes caeruleus": {
         "behaviors": ["song"],
         "translations": {
@@ -13,32 +6,11 @@
             "english": "Eurasian blue tit"
         }
     },
-    "Fringilla coelebs": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Bogfinke",
-            "english": "Common chaffinch"
-        }
-    },
     "Parus major": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Musvit",
             "english": "Great tit"
-        }
-    },
-    "Troglodytes troglodytes": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Gærdesmutte",
-            "english": "Eurasian wren"
-        }
-    },
-    "Turdus merula": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Solsort",
-            "english": "Common blackbird"
         }
     }
 }
