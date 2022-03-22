@@ -116,7 +116,14 @@ class Quiz:
 def new_quiz() -> Quiz:
     # Pick a random species as the correct species
     # and pick a random sound from that species.
-    correct_species = random.choice(Species.query.all())
+    all_species = Species.query.all()
+    weights = []
+    for species in all_species:
+        if species.performance == Performance.ACCEPTED:
+            weights.append(1)
+        else:
+            weights.append(len(all_species))
+    correct_species = random.choices(all_species, weights=weights, k=1)[0]
     sound = random.choice(Sound.query.filter_by(species=correct_species).all())
 
     choices = sorted(Species.query.all(),
