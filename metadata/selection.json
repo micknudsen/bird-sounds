@@ -27,6 +27,13 @@
             "english": "Great tit"
         }
     },
+    "Phylloscopus collybita": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Gransanger",
+            "english": "Common chiffchaff"
+        }
+    },
     "Pyrrhula pyrrhula": {
         "behaviors": ["song", "call"],
         "translations": {
