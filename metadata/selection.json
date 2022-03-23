@@ -27,6 +27,13 @@
             "english": "Great tit"
         }
     },
+    "Pyrrhula pyrrhula": {
+        "behaviors": ["song", "call"],
+        "translations": {
+            "danish": "Dompap",
+            "english": "Eurasian bullfinch"
+        }
+    },
     "Troglodytes troglodytes": {
         "behaviors": ["song"],
         "translations": {
