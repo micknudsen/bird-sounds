@@ -33,5 +33,12 @@
             "danish": "Gærdesmutte",
             "english": "Eurasian wren"
         }
+    },
+    "Turdus merula": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Solsort",
+            "english": "Common blackbird"
+        }
     }
 }
