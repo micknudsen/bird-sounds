@@ -1,65 +1,9 @@
 {
-    "Chloris chloris": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Grønirisk",
-            "english": "European greenfinch"
-        }
-    },
-    "Cyanistes caeruleus": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Blåmejse",
-            "english": "Eurasian blue tit"
-        }
-    },
-    "Fringilla coelebs": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Bogfinke",
-            "english": "Common chaffinch"
-        }
-    },
     "Parus major": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Musvit",
             "english": "Great tit"
-        }
-    },
-    "Phylloscopus collybita": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Gransanger",
-            "english": "Common chiffchaff"
-        }
-    },
-    "Phylloscopus trochilus": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Løvsanger",
-            "english": "Willow warbler"
-        }
-    },
-    "Pyrrhula pyrrhula": {
-        "behaviors": ["song", "call"],
-        "translations": {
-            "danish": "Dompap",
-            "english": "Eurasian bullfinch"
-        }
-    },
-    "Troglodytes troglodytes": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Gærdesmutte",
-            "english": "Eurasian wren"
-        }
-    },
-    "Turdus merula": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Solsort",
-            "english": "Common blackbird"
         }
     }
 }
