@@ -138,6 +138,11 @@ def index():
 
     if request.method == 'POST':
 
+        if request.form.get('flag_sound'):
+            Sound.query.get(session['sound_id']).flagged = True
+            db.session.commit()
+            return redirect(url_for('index'))
+
         session['species_id_guessed'] = \
             session['species_ids_choices'][int(request.form.get('choice_index'))]
 
