@@ -6,6 +6,13 @@
             "english": "Eurasian blue tit"
         }
     },
+    "Lophophanes cristatus": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Topmejse",
+            "english": "European crested tit"
+        }
+    },
     "Parus major": {
         "behaviors": ["song"],
         "translations": {
