@@ -12,5 +12,12 @@
             "danish": "Musvit",
             "english": "Great tit"
         }
+    },
+    "Poecile palustris": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Sumpmejse",
+            "english": "Marsh tit"
+        }
     }
 }
