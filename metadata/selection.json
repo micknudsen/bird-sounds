@@ -13,6 +13,13 @@
             "english": "Great tit"
         }
     },
+    "Periparus ater": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Sortmejse",
+            "english": "Coal tit"
+        }
+    },
     "Poecile palustris": {
         "behaviors": ["song"],
         "translations": {
