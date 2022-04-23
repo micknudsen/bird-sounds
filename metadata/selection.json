@@ -34,6 +34,13 @@
             "english": "Common chiffchaff"
         }
     },
+    "Phylloscopus trochilus": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Løvsanger",
+            "english": "Willow warbler"
+        }
+    },
     "Poecile palustris": {
         "behaviors": ["song"],
         "translations": {
