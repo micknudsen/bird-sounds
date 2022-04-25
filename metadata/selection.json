@@ -47,5 +47,12 @@
             "danish": "Sumpmejse",
             "english": "Marsh tit"
         }
+    },
+    "Sitta europaea": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Spætmejse",
+            "english": "Eurasian nuthatch"
+        }
     }
 }
