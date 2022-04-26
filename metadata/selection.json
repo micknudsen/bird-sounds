@@ -1,4 +1,11 @@
 {
+    "Certhia brachydactyla": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Korttået træløber",
+            "english": "Short-toed treecreeper"
+        }
+    },
     "Certhia familiaris": {
         "behaviors": ["song"],
         "translations": {
