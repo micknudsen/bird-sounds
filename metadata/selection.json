@@ -1,4 +1,11 @@
 {
+    "Certhia familiaris": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Træløber",
+            "english": "Eurasian treecreeper"
+        }
+    },
     "Cyanistes caeruleus": {
         "behaviors": ["song"],
         "translations": {
