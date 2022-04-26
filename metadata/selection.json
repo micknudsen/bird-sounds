@@ -75,5 +75,12 @@
             "danish": "Spætmejse",
             "english": "Eurasian nuthatch"
         }
+    },
+    "Troglodytes troglodytes": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Gærdesmutte",
+            "english": "Eurasian wren"
+        }
     }
 }
