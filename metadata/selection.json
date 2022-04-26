@@ -20,6 +20,13 @@
             "english": "Eurasian blue tit"
         }
     },
+    "Erithacus rubecula": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Rødhals",
+            "english": "European robin"
+        }
+    },
     "Fringilla coelebs": {
         "behaviors": ["song"],
         "translations": {
