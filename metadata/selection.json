@@ -20,6 +20,13 @@
             "english": "Eurasian blue tit"
         }
     },
+    "Fringilla coelebs": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Bogfinke",
+            "english": "Common chaffinch"
+        }
+    },
     "Lophophanes cristatus": {
         "behaviors": ["song"],
         "translations": {
