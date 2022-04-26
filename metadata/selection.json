@@ -76,6 +76,13 @@
             "english": "Marsh tit"
         }
     },
+    "Regulus ignicapilla": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Rødtoppet fuglekonge",
+            "english": "Common firecrest"
+        }
+    },
     "Regulus regulus": {
         "behaviors": ["song"],
         "translations": {
