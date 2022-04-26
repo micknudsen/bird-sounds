@@ -76,6 +76,13 @@
             "english": "Marsh tit"
         }
     },
+    "Regulus regulus": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Fuglekonge",
+            "english": "Goldcrest"
+        }
+    },
     "Sitta europaea": {
         "behaviors": ["song"],
         "translations": {
