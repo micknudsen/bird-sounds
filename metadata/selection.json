@@ -2,85 +2,85 @@
     "Certhia brachydactyla": {
         "behaviors": ["song"],
         "translations": {
-            "danish": "Korttået træløber",
-            "english": "Short-toed treecreeper"
+            "danish": "Korttået Træløber",
+            "english": "Short-Toed Treecreeper"
         }
     },
     "Certhia familiaris": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Træløber",
-            "english": "Eurasian treecreeper"
+            "english": "Eurasian Treecreeper"
         }
     },
     "Cyanistes caeruleus": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Blåmejse",
-            "english": "Eurasian blue tit"
+            "english": "Eurasian Blue Tit"
         }
     },
     "Erithacus rubecula": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Rødhals",
-            "english": "European robin"
+            "english": "European Robin"
         }
     },
     "Fringilla coelebs": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Bogfinke",
-            "english": "Common chaffinch"
+            "english": "Common Chaffinch"
         }
     },
     "Lophophanes cristatus": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Topmejse",
-            "english": "European crested tit"
+            "english": "European Crested Tit"
         }
     },
     "Parus major": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Musvit",
-            "english": "Great tit"
+            "english": "Great Tit"
         }
     },
     "Periparus ater": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Sortmejse",
-            "english": "Coal tit"
+            "english": "Coal Tit"
         }
     },
     "Phylloscopus collybita": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Gransanger",
-            "english": "Common chiffchaff"
+            "english": "Common Chiffchaff"
         }
     },
     "Phylloscopus trochilus": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Løvsanger",
-            "english": "Willow warbler"
+            "english": "Willow Warbler"
         }
     },
     "Poecile palustris": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Sumpmejse",
-            "english": "Marsh tit"
+            "english": "Marsh Tit"
         }
     },
     "Regulus ignicapilla": {
         "behaviors": ["song"],
         "translations": {
-            "danish": "Rødtoppet fuglekonge",
-            "english": "Common firecrest"
+            "danish": "Rødtoppet Fuglekonge",
+            "english": "Common Firecrest"
         }
     },
     "Regulus regulus": {
@@ -94,14 +94,14 @@
         "behaviors": ["song"],
         "translations": {
             "danish": "Spætmejse",
-            "english": "Eurasian nuthatch"
+            "english": "Eurasian Nuthatch"
         }
     },
     "Troglodytes troglodytes": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Gærdesmutte",
-            "english": "Eurasian wren"
+            "english": "Eurasian Wren"
         }
     }
 }
