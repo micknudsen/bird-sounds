@@ -23,7 +23,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 vernacular_language = os.getenv('VERNACULAR_LANGUAGE', default='danish')
 
-history_length = os.getenv('HIstory_LENGTH', default=100)
+history_length = os.getenv('HISTORY_LENGTH', default=100)
 minimum_number_of_guesses = os.getenv('MINIMUM_NUMBER_OF_GUESSES', default=10)
 minimum_fraction_correct = os.getenv('MINIMUM_FRACTION_CORRECT', default=0.9)
 
