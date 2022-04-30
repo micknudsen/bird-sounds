@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - flask ==2.1.1
+  - flask ==2.1.2
   - flask-bootstrap ==3.3.7.1
   - flask-sqlalchemy ==2.5.1
   - pandas ==1.4.2
