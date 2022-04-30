@@ -12,5 +12,12 @@
             "danish": "Musvit",
             "english": "Great Tit"
         }
+    },
+    "Periparus ater": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Sortmejse",
+            "english": "Coal Tit"
+        }
     }
 }
