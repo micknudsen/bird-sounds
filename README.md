@@ -38,14 +38,14 @@ $ cat metadata/selection.json
         "behaviors": ["song", "alarm call"],
         "translations": {
             "danish": "Blåmejse",
-            "english": "Eurasian blue tit"
+            "english": "Eurasian Blue Tit"
         }
     },
     "Parus major": {
         "behaviors": ["song"],
         "translations": {
             "danish": "Musvit",
-            "english": "Great tit"
+            "english": "Great Tit"
         }
     }
 }
