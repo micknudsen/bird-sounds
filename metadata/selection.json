@@ -19,5 +19,12 @@
             "danish": "Sortmejse",
             "english": "Coal Tit"
         }
+    },
+    "Poecile palustris": {
+        "behaviors": ["song"],
+        "translations": {
+            "danish": "Sumpmejse",
+            "english": "Marsh Tit"
+        }
     }
 }
