@@ -26,7 +26,7 @@ try:
 
 except FileNotFoundError:
     metadata = pd.read_csv('metadata/xeno-canto/verbatim.txt', sep='\t', low_memory=False)
-    metadata = metadata[['gbifID', 'behavior', 'scientificName']].set_index('gbifID')
+    metadata = metadata[['gbifID', 'behavior', 'scientificName', 'occurrenceID']].set_index('gbifID')
 
     multimedia = pd.read_csv('metadata/xeno-canto/multimedia.txt', sep='\t', low_memory=False)
     multimedia = multimedia[multimedia['type'] == 'Sound'][['gbifID', 'identifier']].set_index('gbifID')
@@ -72,6 +72,9 @@ db.create_all()
 
 for path in track(list(pathlib.Path('static/sounds').rglob('*.mp3')), transient=True):
 
+    gbif_id = int(path.name.removesuffix('.mp3'))
+    web_link = data.loc[gbif_id]['occurrenceID']
+
     species_name = path.parts[2].replace('_', ' ').capitalize()
     behavior_name = path.parts[3].replace('_', ' ').capitalize()
 
@@ -87,7 +90,7 @@ for path in track(list(pathlib.Path('static/sounds').rglob('*.mp3')), transient=
 
     sound = Sound.query.filter_by(path=str(path)).first()
     if not sound:
-        sound = Sound(path=str(path), species=species, behavior=behavior)
+        sound = Sound(path=str(path), web_link=web_link, species=species, behavior=behavior)
         db.session.add(sound)
 
 for species in Species.query.all():

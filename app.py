@@ -71,6 +71,7 @@ class Behavior(db.Model):
 class Sound(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     path = db.Column(db.String(64), unique=True)
+    web_link = db.Column(db.String(128), unique=True)
     flagged = db.Column(db.Boolean, default=False)
     species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
     behavior_id = db.Column(db.Integer, db.ForeignKey('behavior.id'))
