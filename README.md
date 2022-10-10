@@ -13,23 +13,7 @@ $ conda activate bird-sounds
 
 ## Metadata
 
-Sounds can be obtained from the [xeno-canto](https://www.gbif.org/dataset/b1047888-ae52-4179-9dd5-5448ea342a24) dataset. Download the metadata and place it in `metadata/xeno-canto` inside the app folder:
-
-```
-$ tree metadata/xeno-canto
-metadata/xeno-canto
-├── citations.txt
-├── dataset
-│   └── b1047888-ae52-4179-9dd5-5448ea342a24.xml
-├── meta.xml
-├── metadata.xml
-├── multimedia.txt
-├── occurrence.txt
-├── rights.txt
-└── verbatim.txt
-```
-
-Now go ahead and fill out `metadata/selection.json` with information about the species and the behaviors you would like to download. Here is an example with just two species:
+Now go ahead and fill out `metadata/selection.json` with information about the species and the sounds you would like to download. Here is an example with just two species:
 
 ```
 $ cat metadata/selection.json

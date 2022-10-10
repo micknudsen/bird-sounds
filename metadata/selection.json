@@ -1,23 +1,17 @@
 {
-    "Cyanistes caeruleus": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Blåmejse",
-            "english": "Eurasian Blue Tit"
-        }
-    },
     "Parus major": {
-        "behaviors": ["song"],
         "translations": {
             "danish": "Musvit",
             "english": "Great Tit"
-        }
-    },
-    "Periparus ater": {
-        "behaviors": ["song"],
-        "translations": {
-            "danish": "Sortmejse",
-            "english": "Coal Tit"
+        },
+        "sounds": {
+            "song": [
+                "698342",
+                "720292",
+                "721009",
+                "712362",
+                "750627"
+            ]
         }
     }
 }
