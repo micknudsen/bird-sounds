@@ -13,23 +13,24 @@ $ conda activate bird-sounds
 
 ## Metadata
 
-Now go ahead and fill out `metadata/selection.json` with information about the species and the sounds you would like to download. Here is an example with just two species:
+Now go ahead and fill out `metadata/selection.json` with information about the species and the sounds you would like to download. Here is an example with just one species:
 
 ```
 $ cat metadata/selection.json
 {
-    "Cyanistes caeruleus": {
-        "behaviors": ["song", "alarm call"],
-        "translations": {
-            "danish": "Blåmejse",
-            "english": "Eurasian Blue Tit"
-        }
-    },
     "Parus major": {
-        "behaviors": ["song"],
         "translations": {
             "danish": "Musvit",
             "english": "Great Tit"
+        },
+        "sounds": {
+            "song": [
+                "698342",
+                "720292",
+                "721009",
+                "712362",
+                "750627"
+            ]
         }
     }
 }
