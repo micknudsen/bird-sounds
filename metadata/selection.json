@@ -1,4 +1,19 @@
 {
+    "Cyanistes caeruleus": {
+        "translations": {
+            "danish": "Blåmejse",
+            "english": "Eurasian blue tit"
+        },
+        "sounds": {
+            "song": [
+                "698552",
+                "699849",
+                "703418",
+                "704591",
+                "727219"
+            ]
+        }
+    },
     "Parus major": {
         "translations": {
             "danish": "Musvit",
