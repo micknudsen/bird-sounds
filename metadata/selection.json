@@ -22,5 +22,16 @@
                 "757053"
             ]
         }
+    },
+    "Periparus ater": {
+        "translations": {
+            "danish": "Sortmejse",
+            "english": "Coal Tit"
+        },
+        "sounds": {
+            "song": [
+                "744118"
+            ]
+        }
     }
 }
