@@ -33,5 +33,17 @@
                 "744118"
             ]
         }
+    },
+    "Poecile palustris": {
+        "translations": {
+            "danish": "Sumpmejse",
+            "english": "Marsh Tit"
+        },
+        "sounds": {
+            "song": [
+                "709849",
+                "711566"
+            ]
+        }
     }
 }
