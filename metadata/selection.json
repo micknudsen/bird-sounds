@@ -1,4 +1,15 @@
 {
+    "Asio otus": {
+        "translations": {
+            "danish": "Skovhornugle",
+            "english": "Long-Eared Owl"
+        },
+        "sounds": {
+            "song": [
+                "641545"
+            ]
+        }
+    },
     "Cyanistes caeruleus": {
         "translations": {
             "danish": "Blåmejse",
