@@ -45,5 +45,16 @@
                 "711566"
             ]
         }
+    },
+    "Strix aluco": {
+        "translations": {
+            "danish": "Natugle",
+            "english": "Tawny Owl"
+        },
+        "sounds": {
+            "song": [
+                "783578"
+            ]
+        }
     }
 }
