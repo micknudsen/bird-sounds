@@ -23,6 +23,17 @@
             ]
         }
     },
+    "Glaucidium passerinum": {
+        "translations": {
+            "danish": "Spurveugle",
+            "english": "Eurasian Pygmy Owl"
+        },
+        "sounds": {
+            "song": [
+                "748910"
+            ]
+        }
+    },
     "Parus major": {
         "translations": {
             "danish": "Musvit",
