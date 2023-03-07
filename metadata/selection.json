@@ -1,4 +1,16 @@
 {
+    "Aegolius funereus": {
+        "translations": {
+            "danish": "Perleugle",
+            "english": "Boreal Owl"
+        },
+        "sounds": {
+            "song": [
+                "733612"
+            ]
+        }
+
+    },
     "Asio otus": {
         "translations": {
             "danish": "Skovhornugle",
