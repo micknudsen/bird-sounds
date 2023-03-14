@@ -94,5 +94,16 @@
                 "770586"
             ]
         }
+    },
+    "Tyto alba": {
+        "translations": {
+            "danish": "Slørugle",
+            "english": "Western Barn Owl"
+        },
+        "sounds": {
+            "song": [
+                "783216"
+            ]
+        }
     }
 }
