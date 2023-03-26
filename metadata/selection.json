@@ -23,6 +23,17 @@
             ]
         }
     },
+    "Bubo bubo": {
+        "translations": {
+            "danish": "Stor Hornugle",
+            "english": "Eurasian Eagle-Owl"
+        },
+        "sounds": {
+            "song": [
+                "702384"
+            ]
+        }
+    },
     "Cyanistes caeruleus": {
         "translations": {
             "danish": "Blåmejse",
