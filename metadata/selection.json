@@ -1,39 +1,4 @@
 {
-    "Aegolius funereus": {
-        "translations": {
-            "danish": "Perleugle",
-            "english": "Boreal Owl"
-        },
-        "sounds": {
-            "song": [
-                "733612"
-            ]
-        }
-
-    },
-    "Asio otus": {
-        "translations": {
-            "danish": "Skovhornugle",
-            "english": "Long-Eared Owl"
-        },
-        "sounds": {
-            "song": [
-                "641545",
-                "709934"
-            ]
-        }
-    },
-    "Bubo bubo": {
-        "translations": {
-            "danish": "Stor Hornugle",
-            "english": "Eurasian Eagle-Owl"
-        },
-        "sounds": {
-            "song": [
-                "702384"
-            ]
-        }
-    },
     "Cyanistes caeruleus": {
         "translations": {
             "danish": "Blåmejse",
@@ -46,17 +11,6 @@
             ]
         }
     },
-    "Glaucidium passerinum": {
-        "translations": {
-            "danish": "Spurveugle",
-            "english": "Eurasian Pygmy Owl"
-        },
-        "sounds": {
-            "song": [
-                "748910"
-            ]
-        }
-    },
     "Parus major": {
         "translations": {
             "danish": "Musvit",
@@ -66,54 +20,6 @@
             "song": [
                 "709733",
                 "757053"
-            ]
-        }
-    },
-    "Periparus ater": {
-        "translations": {
-            "danish": "Sortmejse",
-            "english": "Coal Tit"
-        },
-        "sounds": {
-            "song": [
-                "744118"
-            ]
-        }
-    },
-    "Poecile palustris": {
-        "translations": {
-            "danish": "Sumpmejse",
-            "english": "Marsh Tit"
-        },
-        "sounds": {
-            "song": [
-                "709849",
-                "711566"
-            ]
-        }
-    },
-    "Strix aluco": {
-        "translations": {
-            "danish": "Natugle",
-            "english": "Tawny Owl"
-        },
-        "sounds": {
-            "song": [
-                "783578"
-            ],
-            "call": [
-                "770586"
-            ]
-        }
-    },
-    "Tyto alba": {
-        "translations": {
-            "danish": "Slørugle",
-            "english": "Western Barn Owl"
-        },
-        "sounds": {
-            "song": [
-                "783216"
             ]
         }
     }
