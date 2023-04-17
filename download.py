@@ -6,6 +6,8 @@ import urllib.request
 
 from collections import defaultdict
 
+from pydub import AudioSegment
+
 from rich.logging import RichHandler
 from rich.progress import track
 
@@ -21,10 +23,10 @@ def download(species, behavior, xc_numbers):
     simple_species = species.replace(' ', '_').lower()
     simple_behavior = behavior.replace(' ', '_').lower()
 
-    for xc_number in track(xc_numbers, description=f'{species} ({behavior.capitalize()})', transient=True):
+    for xc_number, (start, end) in track(xc_numbers.items(), description=f'{species} ({behavior.capitalize()})', transient=True):
 
         download_link = f'https://xeno-canto.org/{xc_number}/download'
-        local_file = os.path.join('static', 'sounds', simple_species, simple_behavior, f'{xc_number}.mp3')
+        local_file = os.path.join('static', 'raw', simple_species, simple_behavior, f'{xc_number}.mp3')
 
         if not os.path.isfile(local_file):
             try:
@@ -32,7 +34,13 @@ def download(species, behavior, xc_numbers):
                 urllib.request.urlretrieve(download_link, local_file)
             except urllib.error.HTTPError as e:
                 logging.warning(f'Unable to download sound XC_{xc_number} for {species} ({behavior}). Reason given: {e}')
+                continue
 
+        processed_file = os.path.join('static', 'sounds', simple_species, simple_behavior, f'{xc_number}.mp3')
+        os.makedirs(os.path.dirname(processed_file), exist_ok=True)
+
+        sound = AudioSegment.from_file(local_file, format='mp3')
+        sound[start:end].export(processed_file, format='mp3')
 
 logging.info('Downloading sounds')
 
