@@ -9,3 +9,4 @@ dependencies:
   - pydub ==0.25.1
   - python ==3.10.6
   - rich ==12.6.0
+  - sqlalchemy ==1.4.46
