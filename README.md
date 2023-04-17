@@ -32,7 +32,7 @@ $ cat metadata/selection.json
 }
 ```
 
-In this example, the sound [XC709733](https://xeno-canto.org/709733) is dowloaded as cropped to the interval from `1` to `3.5` seconds. To download sounds (already downloaded sounds will not be re-downloaded) and update the database, simply run `python download.py`.
+In this example, the sound [XC709733](https://xeno-canto.org/709733) is dowloaded and cropped to the interval from `1` to `3.5` seconds. To download sounds (already downloaded sounds will not be re-downloaded) and update the database, simply run `python download.py`.
 
 ## Running
 
