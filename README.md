@@ -13,7 +13,7 @@ $ conda activate bird-sounds
 
 ## Metadata
 
-Now go ahead and fill out `metadata/selection.json` with information about the species and the sounds you would like to download. This repository comes with a curated set of sound. See the [wiki](https://github.com/micknudsen/bird-sounds/wiki) for more information. Here is an example with just one species:
+Now go ahead and fill out `metadata/selection.json` with information about the species and the sounds you would like to download. This repository comes with a curated set of sound. Here is an example with just one species:
 
 ```
 $ cat metadata/selection.json
