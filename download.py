@@ -36,7 +36,7 @@ def download(species, behavior, xc_numbers):
                 logging.warning(f'Unable to download sound XC_{xc_number} for {species} ({behavior}). Reason given: {e}')
                 continue
 
-        processed_file = os.path.join('static', 'sounds', simple_species, simple_behavior, f'{xc_number}.mp3')
+        processed_file = os.path.join('static', 'sounds', simple_species, simple_behavior, f'{xc_number}_{start}_{end}.mp3')
         os.makedirs(os.path.dirname(processed_file), exist_ok=True)
 
         sound = AudioSegment.from_file(local_file, format='mp3')
