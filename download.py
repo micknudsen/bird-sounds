@@ -75,7 +75,7 @@ logging.info("Updating database")
 db.create_all()
 
 for path in track(list(pathlib.Path("static/sounds").rglob("*.mp3")), transient=True):
-    xc_number = path.name.removesuffix(".mp3")
+    xc_number = path.name.removesuffix(".mp3").split("_")[0]
     web_link = f"https://xeno-canto.org/{xc_number}"
 
     species_name = path.parts[2].replace("_", " ").capitalize()
