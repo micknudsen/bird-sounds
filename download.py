@@ -53,13 +53,13 @@ def download(species, behavior, xc_numbers):
             simple_behavior,
             f"{xc_number}_{start}_{end}.mp3",
         )
-        os.makedirs(os.path.dirname(processed_file), exist_ok=True)
+        if not os.path.isfile(processed_file):
+            os.makedirs(os.path.dirname(processed_file), exist_ok=True)
+            sound = AudioSegment.from_file(local_file)
+            sound[start:end].export(processed_file, format="mp3")
 
-        sound = AudioSegment.from_file(local_file)
-        sound[start:end].export(processed_file, format="mp3")
 
-
-logging.info("Downloading sounds")
+logging.info("Downloading and processing sounds")
 
 dictionary = defaultdict(dict)
 
