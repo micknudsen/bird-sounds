@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - ffmpeg ==5.1.2
   - flask ==2.2.2
   - flask-bootstrap ==3.3.7.1
   - flask-sqlalchemy ==2.5.1
