@@ -21,6 +21,34 @@
             }
         }
     },
+    "Lophophanes cristatus": {
+        "translations": {
+            "danish": "Topmejse",
+            "english": "European Crested Tit"
+        },
+        "sounds": {
+            "call": {
+                "780618": [
+                    7250,
+                    9000
+                ]
+            },
+            "song": {
+                "549433": [
+                    750,
+                    2250
+                ],
+                "780340": [
+                    500,
+                    3500
+                ],
+                "790414": [
+                    0,
+                    3000
+                ]
+            }
+        }
+    },
     "Parus major": {
         "translations": {
             "danish": "Musvit",
