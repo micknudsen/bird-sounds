@@ -11,7 +11,7 @@ from pydub import AudioSegment
 from rich.logging import RichHandler
 from rich.progress import track
 
-from app import db, Language, Species, Behavior, Sound, Translation
+from app import db, Language, Species, Sound, Translation
 
 
 logging.basicConfig(
@@ -22,18 +22,18 @@ logging.basicConfig(
 )
 
 
-def download(species, behavior, xc_numbers):
+def download(species, definitions):
+
     simple_species = species.replace(" ", "_").lower()
-    simple_behavior = behavior.replace(" ", "_").lower()
 
     for xc_number, (start, end) in track(
-        xc_numbers.items(),
-        description=f"{species} ({behavior.capitalize()})",
+        definitions.items(),
+        description=f"{species}",
         transient=True,
     ):
         download_link = f"https://xeno-canto.org/{xc_number}/download"
         local_file = os.path.join(
-            "static", "raw", simple_species, simple_behavior, f"{xc_number}.mp3"
+            "static", "raw", simple_species, f"{xc_number}.mp3"
         )
 
         if not os.path.isfile(local_file):
@@ -42,7 +42,7 @@ def download(species, behavior, xc_numbers):
                 urllib.request.urlretrieve(download_link, local_file)
             except urllib.error.HTTPError as e:
                 logging.warning(
-                    f"Unable to download sound XC_{xc_number} for {species} ({behavior}). Reason given: {e}"
+                    f"Unable to download sound XC_{xc_number} for {species}. Reason given: {e}"
                 )
                 continue
 
@@ -50,7 +50,6 @@ def download(species, behavior, xc_numbers):
             "static",
             "sounds",
             simple_species,
-            simple_behavior,
             f"{xc_number}_{start}_{end}.mp3",
         )
         if not os.path.isfile(processed_file):
@@ -65,8 +64,7 @@ dictionary = defaultdict(dict)
 
 with open("metadata/selection.json", "r") as f:
     for species, metadata in json.load(f).items():
-        for behavior, xc_numbers in metadata["sounds"].items():
-            download(species=species, behavior=behavior, xc_numbers=xc_numbers)
+        download(species=species, definitions=metadata["sounds"])
         for language, translation in metadata["translations"].items():
             dictionary[species][language] = translation
 
@@ -79,22 +77,16 @@ for path in track(list(pathlib.Path("static/sounds").rglob("*.mp3")), transient=
     web_link = f"https://xeno-canto.org/{xc_number}"
 
     species_name = path.parts[2].replace("_", " ").capitalize()
-    behavior_name = path.parts[3].replace("_", " ").capitalize()
 
     species = Species.query.filter_by(name=species_name).first()
     if not species:
         species = Species(name=species_name)
         db.session.add(species)
 
-    behavior = Behavior.query.filter_by(name=behavior_name).first()
-    if not behavior:
-        behavior = Behavior(name=behavior_name)
-        db.session.add(behavior)
-
     sound = Sound.query.filter_by(path=str(path)).first()
     if not sound:
         sound = Sound(
-            path=str(path), web_link=web_link, species=species, behavior=behavior
+            path=str(path), web_link=web_link, species=species,
         )
         db.session.add(sound)
 

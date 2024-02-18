@@ -70,18 +70,11 @@ class Species(db.Model):
         return Performance.FAILED_TOO_MANY_WRONG_GUESSES
 
 
-class Behavior(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True)
-    sounds = db.relation("Sound", backref="behavior")
-
-
 class Sound(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     path = db.Column(db.String(64), unique=True)
     web_link = db.Column(db.String(128), unique=True)
     species_id = db.Column(db.Integer, db.ForeignKey("species.id"))
-    behavior_id = db.Column(db.Integer, db.ForeignKey("behavior.id"))
     guesses = db.relation("Guess", backref="sound")
 
 
