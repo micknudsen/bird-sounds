@@ -32,9 +32,7 @@ def download(species, definitions):
         transient=True,
     ):
         download_link = f"https://xeno-canto.org/{xc_number}/download"
-        local_file = os.path.join(
-            "static", "raw", simple_species, f"{xc_number}.mp3"
-        )
+        local_file = os.path.join("static", "raw", simple_species, f"{xc_number}.mp3")
 
         if not os.path.isfile(local_file):
             try:
@@ -86,7 +84,9 @@ for path in track(list(pathlib.Path("static/sounds").rglob("*.mp3")), transient=
     sound = Sound.query.filter_by(path=str(path)).first()
     if not sound:
         sound = Sound(
-            path=str(path), web_link=web_link, species=species,
+            path=str(path),
+            web_link=web_link,
+            species=species,
         )
         db.session.add(sound)
 
